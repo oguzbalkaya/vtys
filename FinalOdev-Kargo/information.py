@@ -1,0 +1,3 @@
+info = {
+    "sitename" : "ÇOMÜ Kargo",
+}

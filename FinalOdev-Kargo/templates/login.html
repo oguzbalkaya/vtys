@@ -1,0 +1,26 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+            <div class="slider-area hero-overly">
+            <div class="single-slider hero-overly  slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-8 col-lg-9">
+                           <i style="color:green;font-weight: bold;font-size: 20px;">Giriş yapmak için bilgilerinizi doğrulayın.</i>
+                            {%include "includes/flashhelpers.html"%}
+				               <form method="POST">
+                                <div class="mt-10">
+									<input type="text" name="id" autocomplete="off" placeholder="Çalışan numaran" class="single-input-secondary">
+								</div>
+                                <div class="mt-10">
+									<input type="password" name="password" autocomplete="off" placeholder="Şifren" class="single-input-secondary">
+								</div><br>
+                            <input type="submit" class="genric-btn default-border" value="Giriş Yap">
+                               </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+{% endblock %}

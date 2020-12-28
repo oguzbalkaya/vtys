@@ -1,0 +1,30 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+            <div class="slider-area hero-overly">
+            <div class="single-slider hero-overly  slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-8 col-lg-9">
+                            <!-- Hero Caption -->
+                            <div class="hero__caption">
+                                <h1>Kargom nerede?</h1>
+                            </div>
+                            {%include "includes/flashhelpers.html"%}
+                            <!--Hero form -->
+                            <form method="POST" class="search-box">
+                                <div style="width: 80%;" class="input-form">
+                                    <input type="text" name="id" autocomplete="off" placeholder="Kargo takip numaranızı girin">
+                                </div>
+
+                                <div style="width: 20%;" class="search-form">
+                                    <input type="submit" style="width: 100%;height: 100%;" class="genric-btn danger" value="Sorgula">
+                                </div>
+                            </form>
+</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+
+        <div class="services-area pt-150 pb-150 section-bg" data-background="" style="background-color: #1b1e21;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle2 text-center mb-80">
+                        </div>
+                    </div>
+                </div>
+            {%include "includes/flashhelpers.html"%}
+            <form method="POST">
+                       <div class="progress-table">
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Müşteri Adı</i></div>
+								<div class="country"><input autocomplete="off" type="text" name="customername" size="25%"></div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Adres</i></div>
+								<div class="country"><input autocomplete="off" type="text" name="address" size="25%"></div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Ücret</i></div>
+								<div class="country"><input autocomplete="off" type="text" name="price" size="25%"></div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Ağırlık</i></div>
+								<div class="country"><input autocomplete="off" type="text" name="weight" size="25%"></div>
+                           </div>
+
+
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Varış Şubesi</i></div>
+								<div class="country" style="width: 40%;font-size: 20px;">
+
+					<select name="branch">
+                        {% for branch in branches %}
+                                        <option value="{{ branch.id }}">{{ branch.name }}</option>
+                        {% endfor %}
+					</select>
+
+                                </div>
+                           </div>
+      </div>
+                 <br>
+                <input type="submit" class="genric-btn default-border" value="Paketi Al">
+             </form>
+        </div>
+            </div>
+
+{% endblock %}

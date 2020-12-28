@@ -1,0 +1,63 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+
+        <div class="services-area pt-150 pb-150 section-bg" data-background="" style="background-color: #1b1e21;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle2 text-center mb-80">
+                        </div>
+                    </div>
+                </div>
+            {%include "includes/flashhelpers.html"%}
+            <form method="POST">
+                       <div class="progress-table">
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Alınış Tarihi</i></div>
+								<div class="country">{{ package.takendate }}</div>
+                           </div>
+                            <div class="table-row">
+                                <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Ağırlık</i></div>
+								<div class="country">{{ package.weight }}</div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Ücret</i></div>
+								<div class="country">{{ package.price }}</div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Müşteri</i></div>
+								<div class="country">{{ package.customername }}</div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Adres</i></div>
+								<div class="country">{{ package.address }}</div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Teslim Alan</i></div>
+								<div class="country"><input autocomplete="off"  type="text" name="deliveredto"></div>
+                           </div>
+                           <div class="table-row">
+                               <div class="serial" style="width: 40%;font-size: 20px;"><i style="color: red;font-weight: bold;">Durum</i></div>
+								<div class="country" style="width: 40%;font-size: 20px;">
+
+					<select name="status">
+
+
+                                        <option {% if package.status == "Accepted" %} selected {% endif %} value="Accepted">Kabul Edildi</option>
+										<option {% if package.status == "On The Way" %} selected {% endif %} value="On The Way">Yolda</option>
+										<option {% if package.status == "On The Destination" %} selected {% endif %} value="On The Destination">Varış Şubesinde</option>
+                                        <option {% if package.status == "Distribution" %} selected {% endif %} value="Distribution">Dağıtımda</option>
+										<option {% if package.status == "Delivered" %} selected {% endif %} value="Delivered">Teslim Edildi</option>
+					</select>
+
+                                </div>
+                           </div>
+      </div>
+                 <br>
+                <input type="submit" class="genric-btn default-border" value="Güncelle">
+             </form>
+        </div>
+            </div>
+
+{% endblock %}

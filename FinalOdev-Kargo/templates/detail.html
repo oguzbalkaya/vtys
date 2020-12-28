@@ -1,0 +1,132 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+
+        <div class="services-area pt-150 pb-150 section-bg" data-background="" style="background-color: #1b1e21;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle2 text-center mb-80">
+                            <h2>{{ package.id }} takip numaralı kargo durumu</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-list"></span>
+                            </div>
+                            <div class="services-cap">
+                            {{ type }}
+                                {% if package.status == "Accepted" %}
+                                <a href="#"><h4><i style="color: green;font-weight: bold;">Kargonuz teslim alındı.</i></h4></a>
+                                <p>Kargonuzu <i style="color: red;font-weight: bold;">{{ takenbranch.name }}</i> şubemizden <i style="color: red;font-weight: bold;">{{ package.takendate }}</i> tarihinde teslim aldık.En kısa sürede <i style="color: red;font-weight: bold;">{{ deliverybranch.name }}</i> şubemize teslim etmek için yola çıkaracağız.
+                                </p>
+                                {% else %}
+                                 <h5><a href="#">Kargonuz teslim alındı.</a></h5>
+                                <p>Kargonuzu <i style="color: red;font-weight: bold;">{{ takenbranch.name }}</i> şubemizden <i style="color: red;font-weight: bold;">{{ package.takendate }}</i> tarihinde teslim aldık.
+                                </p>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-travel"></span>
+                            </div>
+                            <div class="services-cap">
+                                    {% if package.status == "On The Way" %}
+                                <a href="#"><h4><i style="color: green;font-weight: bold;">Kargonuz Yolda</i></h4></a>
+                                <p>Kargonuzu <i style="color: red;font-weight: bold;">{{ deliverybranch.name }}</i> şubemize teslim etmek üzere yola çıkardık.
+                                </p>
+                                {% elif package.status == "Accepted" %}
+                                 <h5><a href="#">Yola çıkaracağız</a></h5>
+                                <p>Kargonuz yola çıkacak.
+                                </p>
+                                {% else %}
+                                 <h5><a href="#">Kargonuzu yola çıkardık</a></h5>
+                                <p>Kargonuzu yola çıkardık.
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-home"></span>
+                            </div>
+                            <div class="services-cap">
+                                {% if package.status == "On The Destination" %}
+                                <a href="#"><h4><i style="color: green;font-weight: bold;">Varış Şubesinde</i></h4></a>
+                                <p>Kargonuz şuanda  <i style="color: red;font-weight: bold;">{{ deliverybranch.name }}</i> şubemizde kurye ataması için bekliyor.
+                                </p>
+                                {% elif package.status == "Distribution" %}
+                                 <h5><a href="#">Dağıtıma çıkarıldı.</a></h5>
+                                <p>Kargonuz dağıtıma çıkarıldı.
+                                </p>
+                                    {% elif package.status == "Delivered" %}
+                                       <h5><a href="#">Varış şubesine ulaştı</a></h5>
+                                <p>Kargonuz <i style="color: red;font-weight: bold;">{{ deliverybranch.name }}</i> şubemize ulaştı.
+                                </p>
+                                    {% else %}
+                                    <h5><a href="#">Varış şubesine ulaşacak.</a></h5>
+                                <p>Kargonuz varış şubesine getirilecek.
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-respect"></span>
+                            </div>
+                            <div class="services-cap">
+                                {% if package.status == "Distribution" %}
+                                <a href="#"><h4><i style="color: green;font-weight: bold;">Kargonuz dağıtıma çıktı</i></h4></a>
+                                <p>Kargonuzu teslim etmek için mesai saatleri içinde uğrayacağız.
+                                </p>
+                                {% elif package.status == "Delivered" %}
+                                         <a href="#"><h4><i style="color: green;font-weight: bold;">TESLIM EDILDI</i></h4></a>
+                                    <p><i style="color: green;font-weight: bold;">Kargonuz teslim edildi.</i>
+                                </p>
+                                {% else %}
+                                 <h5><a href="#">Dağıtıma çıkacak.</a></h5>
+                                <p>Kargonuzu dağıtıma çıkaracağız.
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           <div style="width: 100%;">
+      <div class="progress-table">
+
+							<div class="table-row">
+                                <div style="width: 30%;" class="serial"><i style="color: red;font-weight: bold;">Tarih</i></div>
+								<div class="visit"><i style="color: red;font-weight: bold;">Durum</i></div>
+							</div>
+
+          {% for detail in details %}
+                            <div class="table-row">
+
+                            {% if detail.status == "delivered" %}
+                                <div style="width: 30%;" class="serial"><i style="color: green;font-weight: bold;">{{ detail.date }}</i></div>
+                                <div class="visit"><i style="color: green;font-weight: bold;">{{ detail.explanation }}</i></div>
+                            {% else %}
+                            	<div style="width: 30%;" class="serial">{{ detail.date }}</div>
+								<div class="visit">{{ detail.explanation }}</div>
+                            {% endif %}
+							</div>
+          {% endfor %}
+
+						</div>
+            </div>
+        </div>
+            </div>
+
+{% endblock %}
